@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Blogs {
+  id          String    @id(map: "primary key")
+  title       String    @db.VarChar
+  description String    @db.VarChar
+  category    String    @db.VarChar
+  likes       Int
+  image       Bytes?
+  author      String    @db.VarChar
+  status      String?   @default("Active") @db.VarChar
+  createdAt   DateTime? @default(now())
+  updatedAt   DateTime?
+  user        Users     @relation(fields: [author], references: [email], onDelete: NoAction, onUpdate: NoAction, map: "blogs_fk")
+}
+
+model Users {
+  email          String    @id(map: "User_pkey") @db.VarChar
+  name           String    @db.VarChar
+  password       String    @db.VarChar
+  token          String?   @db.VarChar
+  picture        Bytes?
+  followersCount Int?      @default(0)
+  followingCount Int?      @default(0)
+  role           String    @default(dbgenerated("USER")) @db.VarChar
+  createdAt      DateTime? @db.Date
+  updatedAt      DateTime? @db.Date
+  blogs          Blogs[]
+}

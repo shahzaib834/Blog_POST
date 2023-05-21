@@ -1,0 +1,54 @@
+Blog Post App
+
+Models.
+1 - Blog - Title, Description , Image , Category, Author(blog), comments, likes/fav
+2 - User - name, picture, contact/email, followers, following , blogs.
+3 - Book - name, Description , Image, Category, Author(book), Comments, likes/fav,
+
+Routes.
+1 - Blog
+- /api/blogs
+- /api/myBlogs
+- /api/blogs/:id
+- /api/blogs/addBlog
+- /api/blogs/updateBlog
+- /api/blogs/deleteBlog
+
+2 - User
+- /api/register
+- /api/login
+- api/myProfile
+- /api/users
+- /api/users/:id
+- /api/users/update
+- api/users/follow/:id
+
+3 - Book
+- /api/books
+- api/myBooks
+- /api/books/:id
+- /api/books/addBook
+- /api/books/deleteBook
+
+
+Features.
+
+- Login/Sign Up(Add User)
+- Create Articles/Blogs
+- View All Blogs
+- Update Author
+- Edit own profile
+- Edit/Delete own blog
+- fav/like Users (Blogger)
+- Follow other Users (Blogger)
+- comment articles/blogs.
+- Create Book
+- Delete Book
+- View Own Books
+- View all books
+- Comments/Reviews on books
+
+Todos.
+
+- Change the database from mongoDB to mySQL.
+- Authirization of All endpoints.

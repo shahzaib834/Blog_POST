@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div class="myContainer">
+    <h1>{{blog.title}}</h1>
+    <div class="imageContainer">
+        <img class="image"
+            src="https://media.istockphoto.com/id/1285603777/photo/shah-faisal-mosque-is-the-masjid-in-islamabad-pakistan-located-on-the-foothills-of-margalla.webp?s=612x612&w=is&k=20&c=769JvGYnCetYoHT5vA_sNeY6HoTWC_JMaDtfefINstc=" />
+        <div class="detailsContainer">
+            <div>
+                <h5>Author: {{blog.author}}</h5>
+                <h6>Category: {{blog.category}}</h6>
+                <p>Likes: 56</p>
+                <p>comments: 10</p>
+                <p>Date: 12-12-2022</p>
+            </div>
+
+            <p>Heart Icon</p>
+        </div>
+    </div>
+    <p>{{blog.description}}</p>
+
+    <h2 style="align-self: flex-start;">Comments</h2>
+    <div class="comments">
+        <p>Shahzaib: Nice One !</p>
+        <p>Great Reading</p>
+    </div>
+    <div class="inputContainer">
+        <textarea class="form-control" rows="5" placeholder="Your Comment"></textarea>
+        <button class="post-btn btn btn-primary">Post</button>
+    </div>
+</div>

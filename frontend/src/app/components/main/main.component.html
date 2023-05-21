@@ -1,0 +1,96 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="searchBarContainer">
+    <input
+      class="form-control mr-sm-2"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+    />
+    <select class="custom-select" id="inputGroupSelect01">
+      <option selected>All</option>
+      <option value="blog">Blogs</option>
+      <option value="book">Books</option>
+    </select>
+
+    <div class="button" type="button">Search</div>
+  </div>
+
+  <div class="buttonsContainer">
+    <button class="btn btn-outline-info" (click)="openModal('blog')">
+      Create a blog
+    </button>
+    <button class="btn btn-outline-primary" (click)="openModal('book')">Create a book</button>
+  </div>
+
+  <!-- Modal -->
+  <div class="myModal" *ngIf="modalOpened">
+    <div class="modalHeader">
+      <h4>{{ selectedModalType.toUpperCase() }}</h4>
+      <span><i class="fa-sharp fa-solid fa-xmark" (click)="closeModal()" ></i></span>
+    </div>
+
+    <div>
+        <form [formGroup]="myForm">
+            <div class="form-group row mt-3">
+                <label class="col-sm-2 col-form-label">{{ selectedModalType.charAt(0).toUpperCase() + selectedModalType.slice(1) }}</label>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="title"
+                    placeholder="Title"
+                    required
+                    formControlName="title"
+                  />
+                </div>
+            </div>
+
+            
+            <div class="form-group row mt-3">
+                <label class="col-sm-2 col-form-label">Description</label>
+                <textarea formControlName="description" class="span6 form-control" rows="7" placeholder="Description" required></textarea>
+            </div>
+
+            <div class="form-group row mt-3">
+                <label class="col-sm-2 col-form-label">Category</label>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="category"
+                    required
+                    placeholder="Category"
+                    formControlName="category"
+                  />
+                </div>
+            </div>
+
+            <div class="form-group row mt-3">
+                <label class="col-sm-2 col-form-label">Image</label>
+                <div class="col-sm-10">
+                    <input formControlName="image" type="file" class="custom-file-input" required id="inputGroupFile01">
+                </div>
+            </div>
+
+            <button class="btn" [disabled]="myForm.invalid" (click)="create()" type="submit">Create</button>
+        </form>
+    </div>
+  </div>
+  <!--Modal-End-->
+
+  <div class="contentContainer row d-flex justify-content-center">
+    <div
+      class="card col-md-4 p-1 m-2"
+      style="width: 18rem"
+      *ngFor="let blog of blogs"
+    >
+      <img class="card-img-top" [src]="blog.image" alt="Blog/Book image" />
+      <div class="card-body">
+        <h5 class="card-title">{{ blog.title }}</h5>
+        <p class="card-text">{{ blog.description.slice(0, 50) }}</p>
+        <a (click)="onSelect(blog)" class="btn btn-sm btn-outline-secondary">View More...</a>
+      </div>
+    </div>
+  </div>
+</div>

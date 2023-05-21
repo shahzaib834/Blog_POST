@@ -1,0 +1,45 @@
+.myContainer {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.detailsContainer {
+    line-height: 40%;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+}
+
+.imageContainer {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.image {
+    border-radius: 10px;
+}
+
+.comments{
+    width: 100%;
+    padding: 10px;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.post-btn {
+    width: 100px;
+    align-self: flex-end;
+}
