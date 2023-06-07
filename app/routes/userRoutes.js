@@ -10,7 +10,7 @@ const {
   showUserWithId,
   updateUser,
   followUser,
-} = require('../controllers/UserController');
+} = require('../controllers/userController');
 const {protect, authorizeRoles} = require('../middleware/authMiddleware');
 
 const router = express.Router();

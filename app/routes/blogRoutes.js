@@ -8,7 +8,7 @@ const {
   likeABlog,
   commentOnABlog,
   showMyBlogs,
-} = require('../Controllers/BlogPostController');
+} = require('../controllers/blogPostController');
 
 const { protect } = require('../middleware/authMiddleware');
 const router = express.Router();

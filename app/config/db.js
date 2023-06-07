@@ -1,5 +1,11 @@
 const { PrismaClient } = require('@prisma/client');
 
-const prisma = new PrismaClient();
+let prisma;
+try {
+  prisma = new PrismaClient();
+  console.log('DB connected!');
+} catch (err) {
+  console.log(err);
+}
 
 module.exports = { prisma };

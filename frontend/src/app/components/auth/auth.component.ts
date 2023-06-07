@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
   authMode: string = AUTH_MODE.SIGN_IN;
-  authMessage: string = 'Already have an account. Sign in instead';
+  authMessage: string = "Don't Have an account? Create One";
   // @ts-ignore
   myForm: FormGroup;
 
@@ -31,39 +31,40 @@ export class AuthComponent implements OnInit {
   toggleAuthMode() {
     if (this.authMode === AUTH_MODE.SIGN_IN) {
       this.authMode = AUTH_MODE.SIGN_UP;
-      this.authMessage = "Don't Have an account? Create One";
+      this.authMessage = "Already have an account. Sign in instead";
     } else if (this.authMode === AUTH_MODE.SIGN_UP) {
       this.authMode = AUTH_MODE.SIGN_IN;
-      this.authMessage = 'Already have an account. Sign in instead';
+      this.authMessage = "Don't Have an account? Create One";
     }
   }
 
   signClick() {
-    const email = this.myForm.controls['email'].value;
-    const password = this.myForm.controls['password'].value;
-    const body = {
-      email,
-      password,
-    };
+    this.router.navigate(['/home']);
+    // const email = this.myForm.controls['email'].value;
+    // const password = this.myForm.controls['password'].value;
+    // const body = {
+    //   email,
+    //   password,
+    // };
 
-    this.authMode === AUTH_MODE.SIGN_IN
-      ? this.api.authRequest('users/login', body).subscribe(
-          (res) => {
-            localStorage.setItem('token', res.token);
-            this.router.navigate(['/home']);
-          },
-          (err) => {
-            console.log(err);
-          }
-        )
-      : this.api.authRequest('users/register', body).subscribe(
-          (res) => {
-            localStorage.setItem('token', res.token);
-            this.router.navigate(['/home']);
-          },
-          (err) => {
-            console.log(err);
-          }
-        );
+    // this.authMode === AUTH_MODE.SIGN_IN
+    //   ? this.api.authRequest('users/login', body).subscribe(
+    //       (res) => {
+    //         localStorage.setItem('token', res.token);
+    //         this.router.navigate(['/home']);
+    //       },
+    //       (err) => {
+    //         console.log(err);
+    //       }
+    //     )
+    //   : this.api.authRequest('users/register', body).subscribe(
+    //       (res) => {
+    //         localStorage.setItem('token', res.token);
+    //         this.router.navigate(['/home']);
+    //       },
+    //       (err) => {
+    //         console.log(err);
+    //       }
+    //     );
   }
 }

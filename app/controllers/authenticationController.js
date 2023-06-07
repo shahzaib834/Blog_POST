@@ -1,4 +1,4 @@
-const generateWebToken = require('../Config/generateWebToken');
+const generateWebToken = require('../config/generateWebToken');
 const dotenv = require('dotenv');
 const bcrypt = require('bcrypt');
 const { genSalt } = require('bcrypt');
@@ -47,7 +47,7 @@ const registerUser = async (req, res) => {
 
     // Saving token into cookie
     const options = {
-      expires: new Date(
+      expiresIn: new Date(
         Date.now() + process.env.COOKIE_EXPIRES_TIME * 24 * 60 * 60 * 1000
       ),
       httpOnly: true,
